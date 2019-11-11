@@ -3,8 +3,8 @@ Runs part 3 of assignment.
 
 python3 quesThree.py
 Args:
-    -i inputFileOne.txt
-    -o outputFileOne.txt
+    -i inputFileThree.txt
+    -o outputFileThree.txt
 """
 
 import os
@@ -14,7 +14,7 @@ import math
 from datetime import datetime
 
 # To run the script -
-# python3 quesThree.py -i outputFileTwo.txt -o outputFileThree.txt
+# python3 quesThree.py -i inputFileThree.txt -o outputFileThree.txt
 
 class TfidfCalculator(object):
     def __init__(self, iFile, oFile):
@@ -23,6 +23,7 @@ class TfidfCalculator(object):
         pass
 
     def getTFIDF(self):
+        """This function reads the matrix of frequencies of terms and generates the tf-Idf value."""
         outFile = open(self.oFile, "w")
         docData = {} # data in a structure format [key: values]
         maxFreq = {} # Contains maximum frequency of documents
@@ -63,13 +64,14 @@ class TfidfCalculator(object):
                         maxflag = False
                         n_i[key] = docCount
 
+            """writes the tf-idf values"""
             outFile.write("\n")
             for term in docData:
                 outFile.write(term)
-                idf[term] = round(math.log(float(len(header))/float(n_i[term]), 10), 3)
+                idf[term] = round(math.log(float(len(header))/float(n_i[term]), 10), 3) # this is the idf values
                 for each in header:
-                    termFreq = float(docData[term][each])/float(maxFreq[each])
-                    docData[term][each] = round(termFreq * idf[term], 3)
+                    termFreq = float(docData[term][each])/float(maxFreq[each]) #this is term frequency
+                    docData[term][each] = round(termFreq * idf[term], 3) #this is tf-idf values
                     outFile.write("\t" + str(docData[term][each]))
                 outFile.write("\n")
             outFile.close()
@@ -94,7 +96,4 @@ if __name__ == '__main__':
             oFile = arg
     start = TfidfCalculator(iFile, oFile)
     start.getTFIDF()
-    # import timeit, functools
-    # t = timeit.Timer(functools.partial(getTFIDF, iFile, oFile))
-    # print t.timeit(1)
     print(datetime.now() - startTime)

@@ -3,7 +3,7 @@ Runs part 4 of assignment.
 
 python3 quesThree.py
 Args:
-    --input inputFileOne.txt
+    --input outputFileThree.txt
     --docOne D1
     --docTwo D2
 """
@@ -23,6 +23,7 @@ class CosineCalculator(object):
         pass
 
     def getCosine(self):
+        """ Reads the TF-IDF weights matrix and returns the cosine similarity value of two documents """
         # cosineSimilarity = d1.d2/|d1|*|d2|
         self.docOne = docOne.upper()
         self.docTwo = docTwo.upper()
@@ -54,13 +55,15 @@ class CosineCalculator(object):
             lengthDocTwo = round(math.sqrt(dotResultDocTwo), 3)
             lenProd = round((lengthDocOne * lengthDocTwo), 3)
             documentsDotRes = self.dotProduct(self.docOne, self.docTwo, docData)
-            cosineSimilarity = round((documentsDotRes/lenProd),3)
+            cosineSimilarity = round((documentsDotRes/lenProd),3) # cosine Similarity of two documents
             print("Cosine Similarity between " + self.docOne + " and " + self.docTwo + ": " + str(cosineSimilarity))
             return cosineSimilarity
+
         except (OSError, IOError) as e:
             print("Wrong input file name or file path", e)
 
     def dotProduct(self, docOne, docTwo, docData):
+        """This Function generates the dot product of two documents."""
         termKey = docData.keys()
         listOne = []
         listTwo = []

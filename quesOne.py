@@ -17,7 +17,7 @@ from datetime import datetime
 
 # To run the script - stream
 # python3 quesOne.py -i inputFileOne.txt -o outputFileOne.txt -s stopwordList.txt
-# python3 quesOne.py -i /Users/shwetagupta/Downloads/input_s1.txt -o outputFileOne.txt -s stopwordList.txt
+
 
 class PreProcessing(object):
     def __init__(self, writerFlag, iFile, oFile, stopwordFile):
@@ -27,6 +27,14 @@ class PreProcessing(object):
         self.writerFlag = writerFlag
         pass
     def process(self):
+        """
+        This function reads the text file and performs-
+            -punctuation
+            -tokenization
+            -lower-casing/upper-casing / punctuation / numbers
+            -stop word
+            -stemming
+        """
         try:
             stopWords = open(self.stopwordFile, "r").read()
             try:
@@ -43,8 +51,6 @@ class PreProcessing(object):
                         except ValueError:
                               continue
                         stringToWrite = ""
-                        # val = val.translate(None, string.punctuation) # revoves all !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-                        # val = val.translate(None, "0123456789") #removes all the numbers
                         val = val.translate(translator)
                         val = val.translate(nTranslator)
                         val = val.lower().strip().split(" ")
@@ -91,7 +97,4 @@ if __name__ == '__main__':
             stopwordFile = arg
     start = PreProcessing(True, iFile, oFile, stopwordFile)
     start.process()
-    # import timeit, functools
-    # t = timeit.Timer(functools.partial(preProcessing, iFile, oFile, stopwordFile))
-    # print t.timeit(1)
     print(datetime.now() - startTime)

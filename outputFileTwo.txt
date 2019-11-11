@@ -1,11 +1,10 @@
-    D1	D2	D3	D4	D5	D6
-approach	0	0	1	0	0	0
-barrier	0	0	0	0	1	0
-breakthrough	1	0	1	0	1	1
-challeng	0	0	0	1	0	1
-mani	0	0	0	1	0	0
-materi	1	1	1	0	0	0
-new	0	1	2	1	0	0
-past	0	0	0	0	0	1
-research	1	2	1	1	1	1
-student	0	1	0	1	0	0
+approach	D3
+barrier	D5
+breakthrough	D1	D3	D5	D6
+challeng	D4	D6
+mani	D4
+materi	D1	D2	D3
+new	D2	D3	D4
+past	D6
+research	D1	D2	D3	D4	D5	D6
+student	D2	D4
