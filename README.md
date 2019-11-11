@@ -76,3 +76,14 @@ example:
 python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "material OR {new BUT NOT research} AND barrier"
 
 ```
+
+# sample queries -
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "{breakthrough AND new} BUT NOT many"
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "shweta AND barrier"
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "past OR {new AND student}"
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "material OR {new BUT NOT research} AND barrier"
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "{past BUT NOT research} AND barrier"
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "new BUT NOT (approach AND barrier)"
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "challenge or (research BUT NOT materi)"
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "{material /2 research} OR {research OR material} AND {breakthrough BUT NOT barrier} AND NOT student"
+# python3 quesFive.py -i inputFileOne.txt -s stopwordList.txt -q "{material AND research} OR {research OR material} AND {breakthrough BUT NOT barrier} AND NOT student"
